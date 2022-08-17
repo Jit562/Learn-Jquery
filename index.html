@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery Tutorial</title>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+<body>
+
+    <p id="pra">this is one</p>
+    <p class="para">this is Two</p>
+    <p class="para">this is three</p>
+    <a href="">Link</a> <br><br><hr>
+
+    <button id="btn">Click</button> 
+    <button id="btn1">Click one</button> <br><br>
+
+    <div id="colored-div" style="background-color: red; height:auto; width:400px; color: aliceblue;"> 
+    
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde dolores ipsa, sint voluptates fuga laudantium inventore debitis assumenda deserunt! Maiores consequuntur nisi ratione quis perspiciatis, ducimus accusamus odio quaerat iste.
+
+        </p>
+    
+    </div>
+
+    <form action="" method="post">
+        name: <input type="text" name="name" id="nameid"> <br><br>
+        email: <input type="text" name="email" id="emailid"> <br><br>
+        city: <input type="text" name="city" id="cityid"> <br><br>
+
+        <input type="submit" value="Save data" id="btn2">
+    </form>
+
+    <a href="https://www.google.com/" id="glink">Link</a>
+
+    <script>
+
+       
+        // selctor same as css use 
+        $('*').hide(); // all select 
+        $(p).hide();  // tag selctor
+        $("#pra").hide(); // id selector
+        $(".para").hide(); // class selector
+
+        
+
+
+        // event function 
+
+        $("#btn").click(function(){
+            
+            $("#pra").hide();
+            $(this).hide(); // current element selector
+
+        })
+
+        $("#btn").dblclick(function(){
+
+            $("#pra").hide();
+            $(this).hide(); // current element selector
+
+        })
+
+        $("#colored-div").mouseenter(function(){
+
+            $("#pra").hide();
+            
+        })
+        $("#colored-div").mouseleave(function(){
+
+            $("#pra").hide();
+           
+        })
+
+        $("#colored-div").hover(function(){
+
+            $("#pra").hide();
+           
+        },
+        function(){
+            $("#pra").show();
+        });
+
+        $("#colored-div").on({  // for multiple event use
+            click: function(){
+                $(this).css("background-color", "red");
+            },
+            mouseleave: function(){
+                $(this).css("background-color", "blue");
+            },
+            mouseenter: function(){
+                $(this).css("background-color", "green");
+            }
+        });
+
+
+        $(document).ready(function(){
+
+            $("#colored-div").on({  // for multiple event use
+                click: function(){
+                    $(this).css("background-color", "red");
+                },
+                mouseleave: function(){
+                    $(this).css("background-color", "blue");
+                },
+                mouseenter: function(){
+                    $(this).css("background-color", "green");
+                }
+            });
+
+        });
+
+        // or 
+
+        $(function(){
+
+            $("#colored-div").on({  // for multiple event use
+                click: function(){
+                    $(this).css("background-color", "red");
+                },
+                mouseleave: function(){
+                    $(this).css("background-color", "blue");
+                },
+                mouseenter: function(){
+                    $(this).css("background-color", "green");
+                }
+            });
+
+        });
+
+
+        // effect function
+
+
+        $(document).ready(function(){
+            $("#btn").click(function(){
+                $("#colored-div").hide();
+                $("#colored-div").hide(1000); // time stamp using milisecond 1 second = 1000ms
+                $("#colored-div").fadeOut(1000); // time stamp using milisecond 1 second = 1000ms
+
+            });
+
+            $("#btn1").click(function(){
+                $("#colored-div").show();
+                $("#colored-div").show(2000);
+                $("#colored-div").fadeToggle(2000);
+                $("#colored-div").fadeTo(2000, 0.5); // opecity use
+                $("#colored-div").fadeIn(2000);
+                $("#colored-div").slideDown(2000);
+                $("#colored-div").slideUp(2000);
+                $("#colored-div").slideToggle(2000);
+
+            });
+        });
+
+
+        // animation function
+
+        $(document).ready(function(){
+            $("#btn").click(function(){
+                
+                $("#colored-div").animate({
+                    opacity: "0.3",
+                    height : "20rem",
+                    width : "10rem"
+                }, 4000); 
+
+            });
+            $("#btn1").click(function(){
+                
+                $("#colored-div").stop();
+            });    
+        });
+
+
+        // callback function
+
+        $(document).ready(function(){
+
+            $("#btn").click(function(){
+                
+                $("#colored-div").hide(3000, function(){  // This is a callback function , call back function to after time effect.
+                      alert("Div Hidden")
+                });
+    
+              });
+             
+        });
+
+        // chaining to use multiple effect in single element
+
+        $(document).ready(function(){
+
+            $("#btn").click(function(){
+                
+                $("#colored-div").css("background-color", "green").slideUp(3000).slideDown(2000);
+    
+              });
+             
+        });
+
+
+        // text fecth using html
+
+        $(document).ready(function(){
+
+            $("#btn").click(function(){
+                
+               var txt = $("#colored-div").text(); // fatch all text in div tag but in div under tag remove only fecth text.
+               alert(txt);
+
+               var txt = $("#colored-div").html(); // fatch all text and html tag.
+               alert(txt);
+    
+              });
+             
+        });
+
+
+        // form field text fetch
+
+
+       $(document).ready(function(){
+        
+        $("#btn2").click(function(){
+            var nmm = $("#nameid").val();
+            var emm = $("#nameid").val();
+            var cmm = $("#nameid").val();
+
+            alert(nmm);
+            
+        });
+
+       });
+
+
+
+    // attribute method
+
+       $(document).ready(function(){
+        
+        $("#btn").click(function(){
+            var nmm = $("#glink").attr("href");
+            alert(nmm);
+            
+        });
+
+       });
+
+
+
+
+    </script>
+    
+</body>
+</html>
